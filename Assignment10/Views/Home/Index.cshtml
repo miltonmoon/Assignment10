@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IndexViewModel
+
+<div class="justify-content-xl-center">
+    <h2>Player Info</h2>
+    <h3>@(@Model.TeamName == null ? "All Teams" : @Model.TeamName)</h3>
+    <table class="table table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th style="width: 25%">Name</th>
+                <th style="width: 50%">Address</th>
+                <th style="width: 25%">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model.Bowlers)
+            {
+                <tr>
+                    <td>@x.BowlerFirstName @x.BowlerMiddleInit @x.BowlerLastName</td>
+                    <td>@x.BowlerAddress @x.BowlerCity, @x.BowlerState @x.BowlerZip</td>
+                    <td>@x.BowlerPhoneNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div page-info="@Model.PageNumberingInfo" page-url-teamname="@Model.TeamName"
+        page-classes-enabled="true"
+        page-class="btn"
+        page-class-normal="btn-outline-dark"
+        page-class-selected="btn-primary"
+        class="btn-group pull-right m-1"></div>

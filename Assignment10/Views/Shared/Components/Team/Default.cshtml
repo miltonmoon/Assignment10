@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Teams>
+
+
+<h3>@(ViewBag.SelectedTeam == null ? "All Teams" : ViewBag.SelectedTeam)</h3>
+
+<a class="btn btn-outline-dark @(ViewBag.SelectedTeam == null ? "btn-primary" : "btn-outline-secondary")" style="width:100%"
+   asp-action="Index" asp-controller="Home" asp-route-teamid="">Show All</a>
+<br />
+
+
+@foreach (var x in Model)
+{
+    <a class="btn btn-outline-dark @(x.TeamName == ViewBag.SelectedTeam ? "btn-primary" : "btn-outline-secondary")" style="width:100%"
+       asp-action="Index" asp-controller="Home"
+       asp-route-teamid="@x.TeamId"
+       asp-route-teamname="@x.TeamName"
+       asp-route-pagenum="1">@x.TeamName</a>
+    <br />
+}
